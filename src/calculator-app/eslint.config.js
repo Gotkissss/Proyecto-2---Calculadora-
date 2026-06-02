@@ -32,7 +32,8 @@ export default [
       'indent': ['error', 2],
       'quotes': ['error', 'single'],
       'semi': ['error', 'never'],
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
       'no-console': 'warn',
       'eol-last': ['error', 'always'],
       'space-before-function-paren': ['error', 'always'],
@@ -40,8 +41,12 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
-      'storybook/no-renderer-packages': 'off',
     },
   },
   ...storybook.configs['flat/recommended'],
+  {
+    rules: {
+      'storybook/no-renderer-packages': 'off',
+    },
+  },
 ]
