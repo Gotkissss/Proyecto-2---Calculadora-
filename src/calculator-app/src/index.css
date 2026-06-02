@@ -12,3 +12,66 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.calculator {
+  background: #16213e;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  width: 320px;
+}
+
+.display {
+  background: #0f3460;
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-align: right;
+  margin-bottom: 16px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.display__operation {
+  color: #a8b2d8;
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.display__value {
+  color: #e2e8f0;
+  font-size: 36px;
+  font-weight: 300;
+  word-break: break-all;
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 500;
+  height: 64px;
+  cursor: pointer;
+  transition: transform 0.1s, opacity 0.1s;
+  background: #1a1a2e;
+  color: #e2e8f0;
+}
+
+.btn:hover { opacity: 0.85; }
+.btn:active { transform: scale(0.95); }
+
+.btn--operator { background: #e94560; color: white; }
+.btn--equal {
+  background: #0f3460;
+  color: white;
+  grid-column: span 2;
+}
+.btn--clear { background: #533483; color: white; }
+.btn--sign { background: #533483; color: white; }
