@@ -31,3 +31,7 @@ bun run storybook
 ```bash
 bun run lint
 ```
+
+## Link del servidor de la clase: 
+
+http://35.239.29.236/24903/GeometryDash/calculadora-react/ 
