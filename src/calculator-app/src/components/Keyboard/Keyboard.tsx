@@ -9,32 +9,34 @@ interface KeyboardProps {
   onSign: () => void
 }
 
-function Keyboard ({ onDigit, onOperation, onEqual, onClear, onDecimal, onSign }: KeyboardProps) {
+const getKeys = (p: KeyboardProps) => [
+  { label: 'C', action: p.onClear, variant: 'clear' as const },
+  { label: '+/-', action: p.onSign, variant: 'sign' as const },
+  { label: '%', action: () => p.onOperation('%'), variant: 'operator' as const },
+  { label: '÷', action: () => p.onOperation('/'), variant: 'operator' as const },
+  { label: '7', action: () => p.onDigit('7') },
+  { label: '8', action: () => p.onDigit('8') },
+  { label: '9', action: () => p.onDigit('9') },
+  { label: '×', action: () => p.onOperation('*'), variant: 'operator' as const },
+  { label: '4', action: () => p.onDigit('4') },
+  { label: '5', action: () => p.onDigit('5') },
+  { label: '6', action: () => p.onDigit('6') },
+  { label: '-', action: () => p.onOperation('-'), variant: 'operator' as const },
+  { label: '1', action: () => p.onDigit('1') },
+  { label: '2', action: () => p.onDigit('2') },
+  { label: '3', action: () => p.onDigit('3') },
+  { label: '+', action: () => p.onOperation('+'), variant: 'operator' as const },
+  { label: '0', action: () => p.onDigit('0') },
+  { label: '.', action: p.onDecimal },
+  { label: '=', action: p.onEqual, variant: 'equal' as const },
+]
+
+function Keyboard (props: KeyboardProps) {
   return (
     <div className="keyboard" role="group" aria-label="calculator keyboard">
-      <Button label="C" onClick={onClear} variant="clear" />
-      <Button label="+/-" onClick={onSign} variant="sign" />
-      <Button label="%" onClick={() => onOperation('%')} variant="operator" />
-      <Button label="÷" onClick={() => onOperation('/')} variant="operator" />
-
-      <Button label="7" onClick={() => onDigit('7')} />
-      <Button label="8" onClick={() => onDigit('8')} />
-      <Button label="9" onClick={() => onDigit('9')} />
-      <Button label="×" onClick={() => onOperation('*')} variant="operator" />
-
-      <Button label="4" onClick={() => onDigit('4')} />
-      <Button label="5" onClick={() => onDigit('5')} />
-      <Button label="6" onClick={() => onDigit('6')} />
-      <Button label="-" onClick={() => onOperation('-')} variant="operator" />
-
-      <Button label="1" onClick={() => onDigit('1')} />
-      <Button label="2" onClick={() => onDigit('2')} />
-      <Button label="3" onClick={() => onDigit('3')} />
-      <Button label="+" onClick={() => onOperation('+')} variant="operator" />
-
-      <Button label="0" onClick={() => onDigit('0')} />
-      <Button label="." onClick={onDecimal} />
-      <Button label="=" onClick={onEqual} variant="equal" />
+      {getKeys(props).map(k => (
+        <Button key={k.label} label={k.label} onClick={k.action} variant={k.variant} />
+      ))}
     </div>
   )
 }
