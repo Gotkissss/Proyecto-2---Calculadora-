@@ -5,7 +5,7 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: '/Proyecto-2---Calculadora-/',
   resolve: {
     alias: {
       react: resolve('./node_modules/react'),
